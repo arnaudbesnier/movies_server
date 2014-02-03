@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.14'            # Framework
 gem 'pg'                         # Database
 
-gem 'activeadmin', '~> 0.5.0'    # Admin layout
+gem 'activeadmin', '~> 0.6.3'    # Admin layout
 
 gem 'nokogiri'                   # Scraping
 
@@ -20,4 +20,4 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+#gem 'jquery-rails'
