@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20140202185935) do
     t.string   "poster"
     t.datetime "release_date"
     t.string   "genre"
+    t.string   "duration"
     t.text     "synopsis"
     t.string   "director"
     t.text     "actors"

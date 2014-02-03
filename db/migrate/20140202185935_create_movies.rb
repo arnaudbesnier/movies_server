@@ -6,6 +6,7 @@ class CreateMovies < ActiveRecord::Migration
       t.string   :poster
       t.datetime :release_date
       t.string   :genre
+      t.string   :duration
       t.text     :synopsis
       t.string   :director
       t.text     :actors
