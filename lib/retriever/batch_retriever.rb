@@ -15,11 +15,10 @@ ActiveRecord::Base.establish_connection(
 
 class BatchRetriever
 
-  def initialize input_file='input/example.txt'
-    puts '  ==> READING...'
+  def initialize input_file='db/input/example.txt'
+    puts "  ==> READING... #{input_file}"
     @movies = []
 
-    puts "====> #{input_file}"
     file = File.new("#{input_file}", 'r')
     while line = file.gets
       @movies << line.split("\n").first
