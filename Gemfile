@@ -5,6 +5,8 @@ gem 'pg'                         # Database
 
 gem 'activeadmin', '~> 0.5.0'    # Admin layout
 
+gem 'nokogiri'                   # Scraping
+
 
 # Gems used only for assets and not required
 # in production environments by default.
