@@ -1,0 +1,13 @@
+# common PostgreSQL database settings
+common: &common
+  adapter:  postgresql
+  encoding: unicode
+  username: postgres
+  password: 4242424242
+  timeout:  5000
+  pool:     5
+
+development:
+  <<:       *common
+  database: movies_server_development
+  host:     localhost
