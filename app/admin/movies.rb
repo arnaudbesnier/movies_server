@@ -22,6 +22,7 @@ ActiveAdmin.register Movie do
 
   form do |f|
     f.inputs 'story' do
+      f.input :alias
       f.input :name
       f.input :genre
       f.input :synopsis
