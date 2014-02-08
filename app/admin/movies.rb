@@ -17,6 +17,7 @@ ActiveAdmin.register Movie do
     column :director,     sortable: :director
     column(:release_date, sortable: :release_date) { |movie| format_date(movie.release_date) }
     column :genre,        sortable: :genre
+    column('') { |movie| edit_link_icon(movie) }
   end
 
   form do |f|
