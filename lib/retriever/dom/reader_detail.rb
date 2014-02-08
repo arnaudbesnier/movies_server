@@ -28,8 +28,8 @@ private
 
   def retrieve_name
     regexp_info_name = /property\=\"og:title\"\ content\=\"(.*?)\"[\s\/\>|\/\>]/
-    # TODO: fix name format
-    @name = @body.scan(regexp_info_name).first.first
+    extracted_name   = @body.scan(regexp_info_name).first.first
+    @name            = extracted_name.gsub('&#39;', '\'')
   end
 
   def retrieve_poster
