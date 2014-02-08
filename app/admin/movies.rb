@@ -1,4 +1,5 @@
 # encoding: utf-8
+include ApplicationHelper
 
 ActiveAdmin.register Movie do
 
@@ -13,7 +14,8 @@ ActiveAdmin.register Movie do
 
   index do
     column :name,         sortable: :name
-    column :release_date, sortable: :release_date
+    column :director,     sortable: :director
+    column(:release_date, sortable: :release_date) { |movie| format_date(movie.release_date) }
     column :genre,        sortable: :genre
   end
 
