@@ -53,7 +53,6 @@ private
   end
 
   def retrieve_synopsis
-    # TODO: fix synopsis format
     regexp_info_synopsis = /<p itemprop="description">\s*(.*)/
     @synopsis = format(@body.scan(regexp_info_synopsis).first.first)
   end
