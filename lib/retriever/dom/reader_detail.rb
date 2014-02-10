@@ -63,9 +63,8 @@ private
   end
 
   def retrieve_actors
-    # TODO: remove the director from the list (first element)
     regexp_info_actors = /<a title=\"([a-zA-Z\s]*)\" href=\"\/personne\/fichepersonne_gen_cpersonne/
-    @actors = @body.scan(regexp_info_actors).flatten.join(', ')
+    @actors = @body.scan(regexp_info_actors).flatten[1..-1].join(', ')
   end
 
   def format html
