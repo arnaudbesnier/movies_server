@@ -20,16 +20,19 @@
   <%= f.inputs 'Poster', style: 'width:31%; margin-right:1%; float:left;' do %>
     <img src='<%= @movie.poster %>' style='margin-left:15px;' height=300>
     <%= f.input :poster, label: false %>
+    <a style='margin-left: 15px;' href="http://www.allocine.fr/recherche/?q=<%= @movie.alias.gsub('_', '+') %>" target='_blank'>Search on Allociné</a>
   <% end %>
 
   <%= f.inputs 'Teaser', style: 'width:31%; margin-right:1%; float:left;' do %>
     <iframe width="400" height="300" src="http://www.youtube.com/embed/<%= @movie.url_teaser.gsub('http://www.youtube.com/watch?v=', '') %>" style='margin: 0 15px;'></iframe>
     <%= f.input :url_teaser, label: false %>
+    <a style='margin-left: 15px;' href='http://www.youtube.com/results?search_query=<%= @movie.alias.gsub('_', ' ') %>' target='_blank'>Search on Youtube</a>
   <% end %>
 
   <%= f.inputs 'Playlist', style: 'width:31%; margin-right:2%; float:left;' do %>
   <iframe width="400" height="300" src="<%= @movie.url_playlist.gsub('http://www.youtube.com', 'http://www.youtube.com/embed') %>" style='margin: 0 15px;'></iframe>
     <%= f.input :url_playlist, label: false %>
+    <a style='margin-left: 15px;' href='http://www.youtube.com/results?search_query=playlist <%= @movie.alias.gsub('_', ' ') %>' target='_blank'>Search on Youtube</a>
   <% end %>
 
   <%= f.actions do %>
