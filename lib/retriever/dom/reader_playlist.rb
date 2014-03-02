@@ -10,14 +10,14 @@ class ReaderPlaylist
 
   def retrieve
     @url_playlist = @body.at_xpath(URL_PLAYLIST_SELECTOR).to_s
-    @url_playlist.gsub!('/playlist?list=PL', '')
+    #@url_playlist.gsub!('/playlist?list=PL', '')
     @url_playlist = nil if @url_playlist.empty?
 
     completed? ? response : nil
   end
 
   def response
-    { url_playlist: "http://gdata.youtube.com/feeds/api/playlists/#@url_playlist?alt=rss" }
+    { url_playlist: "http://www.youtube.com#@url_playlist" }
   end
 
   def completed?
