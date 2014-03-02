@@ -28,6 +28,7 @@
   <% end %>
 
   <%= f.inputs 'Playlist', style: 'width:31%; margin-right:2%; float:left;' do %>
+  <iframe width="400" height="300" src="<%= @movie.url_playlist.gsub('http://www.youtube.com', 'http://www.youtube.com/embed') %>" style='margin: 0 15px;'></iframe>
     <%= f.input :url_playlist, label: false %>
   <% end %>
 
