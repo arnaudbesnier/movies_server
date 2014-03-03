@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails', '3.2.14'            # Framework
-gem 'pg'                         # Database
+gem 'rails', '3.2.6'          # Framework
+gem 'pg'                      # Database
 
-gem 'activeadmin', '~> 0.6.3'    # Admin layout
+gem 'activeadmin', '~> 0.6.3' # Admin layout
 
-gem 'nokogiri'                   # Scraping
+gem 'nokogiri'                # Scraping
 
 
 # Gems used only for assets and not required
