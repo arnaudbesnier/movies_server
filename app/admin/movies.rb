@@ -6,7 +6,7 @@ ActiveAdmin.register Movie do
   actions :index, :edit, :update
 
   scope :reviewed
-  scope :unreviewed
+  scope :unreviewed, default: true
 
   filter :name
 
