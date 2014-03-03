@@ -17,7 +17,7 @@
     </ol>
   <% end %>
 
-  <%= f.inputs 'Poster', style: 'width:31%; margin-right:1%; float:left;' do %>
+  <%= f.inputs 'Poster', style: 'width:30%; margin-right:1%; float:left;' do %>
     <img src='<%= @movie.poster %>' style='margin-left:15px;' height=300>
     <%= f.input :poster, label: false %>
     <a style='margin-left: 15px;' href="http://www.allocine.fr/recherche/?q=<%= @movie.alias.gsub('_', '+') %>" target='_blank'>Search on Allociné</a>
