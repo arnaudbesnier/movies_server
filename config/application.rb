@@ -56,7 +56,7 @@ module MoviesServer
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
-    config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js]
+    config.assets.precompile += %w[admin/active_admin.css.scss admin/active_admin.js]
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
