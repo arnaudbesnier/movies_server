@@ -47,8 +47,8 @@ ActiveAdmin.setup do |config|
   # This will ONLY change the title for the admin section. Other
   # namespaces will continue to use the main "site_title" configuration.
 
-  config.authentication_method = false
-  config.current_user_method = false
+  config.authentication_method = :authenticate_admin_user!
+  config.current_user_method = :current_admin_user
 
   # == Logging Out
   #
