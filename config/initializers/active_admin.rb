@@ -112,7 +112,7 @@ ActiveAdmin.setup do |config|
   # config.favicon = '/assets/favicon.ico'
 
   config.clear_stylesheets!
-  config.register_stylesheet 'active_admin.css.scss'
+  config.register_stylesheet 'active_admin.css'
 
   config.clear_javascripts!
   config.register_javascript 'active_admin.js'
