@@ -6,4 +6,8 @@ class Movie < ActiveRecord::Base
   scope :reviewed,   -> { where(reviewed: true) }
   scope :unreviewed, -> { where(reviewed: false) }
 
+  def csv_playlist
+    url_playlist.gsub('http://www.youtube.com/playlist?list=PL', '')
+  end
+
 end

@@ -5,6 +5,34 @@ ActiveAdmin.register Movie do
 
   actions :index, :edit, :update
 
+  csv :force_quotes => true do
+    column('media_ID')            { |movie| ''                 }
+    column('media_ok')            { |movie| '0'                }
+    column('media_type')          { |movie| 'film'             }
+    column('media_titre')         { |movie| movie.name         }
+    column('media_playlist')      { |movie| movie.csv_playlist }
+    column('media_pseudo')        { |movie| 'admin'            }
+    column('media_affiche')       { |movie| movie.poster       }
+    column('media_date_sortie')   { |movie| movie.release_date }
+    column('media_realisateurs')  { |movie| movie.director     }
+    column('media_acteurs')       { |movie| movie.actors       }
+    column('media_genre')         { |movie| movie.genre        }
+    column('media_nationalite')   { |movie| ''                 }
+    column('media_annonce')       { |movie| ''                 }
+    column('media_nbSaison')      { |movie| ''                 }
+    column('media_synopsis')      { |movie| movie.synopsis     }
+    column('media_nbVisite')      { |movie| '0'                }
+    column('media_date_ajout')    { |movie| ''                 }
+    column('media_date_last_mod') { |movie| ''                 }
+    column('media_nbCom')         { |movie| '0'                }
+    column('media_lien_amazone')  { |movie| ''                 }
+    column('media_etat')          { |movie| '1'                }
+    column('media_supprimer')     { |movie| '0'                }
+    column('media_youtube')       { |movie| movie.url_teaser   }
+    column('media_youtube2')      { |movie| ''                 }
+    column('media_youtube3')      { |movie| ''                 }
+  end
+
   controller do
 
     def update
