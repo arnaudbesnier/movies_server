@@ -8,6 +8,7 @@ class Movie < ActiveRecord::Base
 
   def csv_playlist
     url_playlist.gsub('http://www.youtube.com/playlist?list=PL', '')
+                .gsub(/http:\/\/www.youtube.com\/watch\?v=.*&list=PL/, '')
   end
 
 end
