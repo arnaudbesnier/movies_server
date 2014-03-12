@@ -13,7 +13,6 @@
       <%= f.input :actors, input_html: { style: 'height: 30px' } %>
       <%= f.input :duration %>
       <%= f.input :release_date, as: :date_picker %>
-      <%= f.input :reviewed %>
     </ol>
   <% end %>
 
@@ -22,7 +21,6 @@
     <%= f.input :poster, label: false %>
     <a style='margin-left: 15px;' href="http://www.allocine.fr/recherche/?q=<%= @movie.alias.gsub('_', '+') %>" target='_blank'>Search on Allociné</a>
   <% end %>
-
   <%= f.inputs 'Teaser', style: 'width:31%; margin-right:1%; float:left;' do %>
     <iframe width="400" height="300" src="http://www.youtube.com/embed/<%= @movie.url_teaser.gsub('http://www.youtube.com/watch?v=', '') %>?autoplay=1" style='margin: 0 15px;'></iframe>
     <%= f.input :url_teaser, label: false %>
@@ -35,9 +33,12 @@
     <a style='margin-left: 15px;' href='http://www.youtube.com/results?search_query=<%= @movie.alias.gsub('_', ' ') %> soundtrack' target='_blank'>Search on Youtube</a>
   <% end %>
 
-  <%= f.actions do %>
-    <%= f.submit 'Update' %>
-    <%= link_to 'Cancel', admin_movies_path %>
+  <% unless @movie.reviewed? %>
+    <%= f.actions do %>
+      <%= f.submit 'Update' %>
+      <%= f.submit 'Update & Validate' %>
+      <%= link_to 'Cancel', admin_movies_path %>
+    <% end %>
   <% end %>
 
 <% end %>
