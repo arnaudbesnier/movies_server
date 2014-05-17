@@ -14,7 +14,7 @@ class Retriever
 
   def initialize name
     @completed = false
-    @name      = name
+    @name      = name.strip
     format_name
     @response = { alias: @alias }
   end
@@ -83,7 +83,7 @@ private
                                    .gsub(':', '')
                                    .gsub('-', ' ')
                                    .gsub('d\'', '')
-                                   .gsub('?', '')
+                                   .gsub('?', '').gsub('.', '')
                                    .squeeze(' ').gsub(' ', '+').gsub("'", '')
     @alias = @name_formated.gsub('+', '_')
   end
