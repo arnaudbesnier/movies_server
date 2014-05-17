@@ -40,7 +40,24 @@ private
   def retrieve_release_date
     regexp_info_release_date = /<span itemprop=\"datePublished\".*>(.*)<\/span>/
     @release_date = @body.scan(regexp_info_release_date).first.first
+    format_release_date
   end
+
+  def format_release_date
+    @release_date = @release_date.gsub(' janvier ', '/01/')
+                                 .gsub(' février ', '/02/')
+                                 .gsub(' mars ', '/03/')
+                                 .gsub(' avril ', '/04/')
+                                 .gsub(' mai ', '/05/')
+                                 .gsub(' juin ', '/06/')
+                                 .gsub(' juillet ', '/07/')
+                                 .gsub(' août ', '/08/')
+                                 .gsub(' septembre ', '/09/')
+                                 .gsub(' octobre ', '/10/')
+                                 .gsub(' novembre ', '/11/')
+                                 .gsub(' décembre ', '/12/')
+  end
+
 
   def retrieve_genre
     regexp_info_genre = /<span itemprop=\"genre\">([^<]*)<\/span>/
