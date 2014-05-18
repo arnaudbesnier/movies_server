@@ -14,10 +14,14 @@ class ReaderSearch
   def retrieve_detail_page
     regexp_info_page = /(\/film\/fichefilm_gen_cfilm=\d*.html)'>/i
     results   = @body.scan(regexp_info_page)
-    #puts "===> INFOS : #{results.count} pages"
-    detail_path = results.first.first
-    @movie_id = detail_path.scan(/film\/fichefilm_gen_cfilm=(\d*).html/).first.first
-    @detail_page = "#{URL_DETAIL_INFO}#{detail_path}"
+    if results.count == 0
+      @movie_id    = nil
+      @detail_page = nil
+    else
+      detail_path  = results.first.first
+      @movie_id    = detail_path.scan(/film\/fichefilm_gen_cfilm=(\d*).html/).first.first
+      @detail_page = "#{URL_DETAIL_INFO}#{detail_path}"
+    end
   end
 
 end

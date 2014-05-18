@@ -19,7 +19,7 @@ class ReaderDetail
 
       completed? ? response : nil
     rescue Exception => e
-      puts " ====> #{e}"
+      puts "           ====> #{e}"
       nil
     end
   end

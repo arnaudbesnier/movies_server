@@ -30,6 +30,11 @@ class Retriever
       reader_search = ReaderSearch.new @name_formated, request.body
       reader_search.retrieve_detail_page
 
+      if reader_search.detail_page.nil?
+        puts "           ===> RETRIEVER ERROR: detail page not found"
+        return nil
+      end
+
       request = Requester.new reader_search.detail_page
       request.read
 
@@ -65,7 +70,7 @@ class Retriever
       self
 
     rescue Exception => e
-      puts "    ===> ERROR: #{e}"
+      puts "           ===> RETRIEVER ERROR: #{e}"
       nil
     end
   end
