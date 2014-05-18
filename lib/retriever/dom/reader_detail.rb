@@ -28,9 +28,8 @@ private
 
   def search_field regexp
     data = @body.scan(regexp)
-    return nil if data.nil?
-
-    return data.first.first
+    return nil if data.nil? || data.first.nil?
+    data.first.first
   end
 
   def retrieve_name
@@ -47,7 +46,7 @@ private
   def retrieve_release_date
     regexp_info_release_date = /<span itemprop=\"datePublished\".*>(.*)<\/span>/
     @release_date = search_field(regexp_info_release_date)
-    format_release_date
+    format_release_date if @release_date
   end
 
   def format_release_date
@@ -89,7 +88,8 @@ private
 
   def retrieve_actors
     regexp_info_actors = /<a title=\"([a-zA-Z\s]*)\" href=\"\/personne\/fichepersonne_gen_cpersonne/
-    @actors = @body.scan(regexp_info_actors).flatten[1..-1].join(', ')
+    actors_unformated = @body.scan(regexp_info_actors).flatten[1..-1]
+    @actors = actors_unformated.nil? ? nil : actors_unformated.join(', ')
   end
 
   def format html
