@@ -19,27 +19,34 @@ class ReaderDetail
 
       completed? ? response : nil
     rescue Exception => e
-      puts "           ====> #{e}"
+      puts "           ====> DETAIL RETRIEVER ERROR: #{e}"
       nil
     end
   end
 
 private
 
+  def search_field regexp
+    data = @body.scan(regexp)
+    return nil if data.nil?
+
+    return data.first.first
+  end
+
   def retrieve_name
     regexp_info_name = /property\=\"og:title\"\ content\=\"(.*?)\"[\s\/\>|\/\>]/
-    extracted_name   = @body.scan(regexp_info_name).first.first
-    @name            = extracted_name.gsub('&#39;', '\'')
+    extracted_name   = search_field(regexp_info_name)
+    @name            = extracted_name.nil? ? nil : extracted_name.gsub('&#39;', '\'')
   end
 
   def retrieve_poster
     regexp_info_poster = /property="og:image" content\=\"(.*?)\"[\s\/\>|\/\>]/
-    @poster = @body.scan(regexp_info_poster).first.first
+    @poster = search_field(regexp_info_poster)
   end
 
   def retrieve_release_date
     regexp_info_release_date = /<span itemprop=\"datePublished\".*>(.*)<\/span>/
-    @release_date = @body.scan(regexp_info_release_date).first.first
+    @release_date = search_field(regexp_info_release_date)
     format_release_date
   end
 
@@ -61,22 +68,23 @@ private
 
   def retrieve_genre
     regexp_info_genre = /<span itemprop=\"genre\">([^<]*)<\/span>/
-    @genre = @body.scan(regexp_info_genre).first.first
+    @genre = search_field(regexp_info_genre)
   end
 
   def retrieve_duration
     regexp_info_duration = /<span itemprop="duration"[^>]*>(.*)<\/span>/
-    @duration = @body.scan(regexp_info_duration).first.first
+    @duration = search_field(regexp_info_duration)
   end
 
   def retrieve_synopsis
     regexp_info_synopsis = /<p itemprop="description">\s*(.*)/
-    @synopsis = format(@body.scan(regexp_info_synopsis).first.first)
+    synopsis_unformated = search_field(regexp_info_synopsis)
+    @synopsis = synopsis_unformated.nil? ? nil : format(synopsis_unformated)
   end
 
   def retrieve_director
     regexp_info_director = /<span itemprop=\"director\".*><a title=\"(.*)\" href=\"\/personne\/fichepersonne/
-    @director = @body.scan(regexp_info_director).first.first
+    @director = search_field(regexp_info_director)
   end
 
   def retrieve_actors
