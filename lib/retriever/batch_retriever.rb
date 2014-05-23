@@ -37,7 +37,11 @@ class BatchRetriever
       else
         puts "       SEARCH == #{movie_retriever.name} (#{movie_retriever.name_formated})"
         movie_retriever.search
-        database_insert movie_alias, movie_retriever.response if movie_retriever.completed?
+        if movie_retriever.completed?
+          database_insert movie_alias, movie_retriever.response
+        else
+          puts "              => UNCOMPLETE MOVIE: #{movie_retriever.response.inspect}"
+        end
       end
     end
     return
@@ -52,8 +56,9 @@ private
   def database_insert name, data
     begin
       Movie.create!(data)
+      puts "              => INSERT IN DATABASE"
     rescue Exception
-      puts " => ALREADY IN DATABASE"
+      puts "              => ALREADY IN DATABASE"
     end
   end
 
